@@ -1,0 +1,227 @@
+body {
+  background-color: #60718a;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+  
+ div#login-container {
+	background-color: #ffffff;
+	padding:5px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 5%;
+	width:25%;
+	-webkit-box-shadow: 1px 1px 5px 2px #000000;
+	-moz-box-shadow: 1px 1px 5px 2px #000000;
+	box-shadow: 1px 1px 5px 2px #000000;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+ }
+
+ div#registration-container {
+	background-color: #ffffff;
+	padding:5px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 5%;
+	width:25%;
+	-webkit-box-shadow: 1px 1px 5px 2px #000000;
+	-moz-box-shadow: 1px 1px 5px 2px #000000;
+	box-shadow: 1px 1px 5px 2px #000000;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+ }
+
+ div#header-container {
+	padding:5px;
+	width:90%;
+	height: 110px;
+	background-color: #ffffff;
+	position:absolute;
+	margin-right:5%;
+	margin-left:5%;
+	-webkit-box-shadow: 1px 1px 5px 2px #000000;
+	-moz-box-shadow: 1px 1px 5px 2px #000000;
+	box-shadow: 1px 1px 5px 2px #000000;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+ }
+ 
+ 
+  div.logo {
+	width:170px;
+	height:100px;
+	display:inline block
+ }
+ 
+ div.logo a:hover {
+	background-color: #ffffff
+ }
+ 
+ div.user_nav {
+	margin-top: -100px;
+	float:right;
+	display:inline
+ }
+ 
+ div.search {
+	margin-top: -80px;
+	float:right
+ }
+ 
+ div#main-container {
+	background-color: #d6deeb;
+	margin-left:5%;
+	margin-right:5%;
+	position:absolute;
+	padding:5px;
+	padding-bottom:20px;
+	margin-top: 130px;
+	width:90%;
+	-webkit-box-shadow: 1px 1px 5px 2px #000000;
+	-moz-box-shadow: 1px 1px 5px 2px #000000;
+	box-shadow: 1px 1px 5px 2px #000000;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+ }
+ 
+
+
+ div#main-icons {
+ 	margin-left:18%;
+	margin-right:15%;
+ }
+ 
+ div.icon {
+ 	 background-color: #ffffff;
+	 display:inline block;
+	 float:left;
+	 text-align: center;
+	 v-align:center;
+	padding:5px;
+	margin-left:10px;
+	margin-right:10px;
+	width:200px;
+	height:190px;
+	-webkit-box-shadow: 0px 0px 5px 1px #000000;
+	-moz-box-shadow: 0px 0px 5px 1px #000000;
+	box-shadow: 0px 0px 5px 1px #000000;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+ }
+ 
+ div.icon a:hover {
+	background-color: #ffffff;
+ }
+ 
+ div#left-frame {
+	margin-left: 40px;
+	padding:7px;
+	background-color: #fff;
+	width:250px;
+	float:left;
+	display:inline block;
+	-webkit-box-shadow: 0px 0px 3px 1px #666;
+	-moz-box-shadow: 0px 0px 3px 1px #666;
+	box-shadow: 0px 0px 3px 1px #666;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+ }
+ 
+ div#book-list {
+	margin-right:40px;
+	background-color: #fff;
+	width:700px;
+	float:right;
+	display:inline block;
+	-webkit-box-shadow: 0px 0px 3px 1px #666;
+	-moz-box-shadow: 0px 0px 3px 1px #666;
+	box-shadow: 0px 0px 3px 1px #666;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+ }
+ 
+ table#results {
+	padding:5px;
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+	border: 1px solid black;
+	border-collapse: collapse
+ }
+ 
+ #results td, #results th {
+  border: 1px solid black;
+  
+ }
+ 
+ #results th{
+	background-color: #5d4b6e;
+	color: #F8F3DD
+ }
+ 
+ tr.even_row {
+  background-color: #fff;
+}
+
+tr.odd_row {
+  background-color: #F8F3DD;
+}
+
+ 
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px; }
+
+a {
+  color: #000;
+  &:visited {
+    color: #666; }
+  &:hover {
+    color: black; } }
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px; } }
+
+#notice {
+  color: green; }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table; }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff; }
+  ul li {
+    font-size: 12px;
+    list-style: square; } }

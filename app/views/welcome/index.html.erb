@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag 'welcome' %>
+
+<h2 align="center">Welcome to Kathy's Library!</h2>
+<p align="center">
+	You can log into your account by clicking on "My Books" (you will have to create an account if you haven't already done so).  
+	<br/>
+	You can also browse our selection and see which books we have in our various locations across the St. Louis area.
+</p>
+<br/>
+<br/>
+
+<div id="main-icons">
+	<div class="icon">
+		<% if user_signed_in? %>
+			<%= link_to image_tag("Wooden_Bookshelf-icon.png", :width => "160px", :height => "160px"), '/books/my_books' %>
+		<% else %>
+			<%= link_to image_tag("Wooden_Bookshelf-icon.png", :width => "160px", :height => "160px"), new_user_session_path %>
+		<% end %>
+		<br/>	
+		<%= link_to "My Books", books_path %>
+	</div>
+	
+	<div class="icon">
+		<%= link_to image_tag('book-icon2.png', :width => "160px", :height => "160px"), books_path %>
+		<br/>
+		<%= link_to "Books", books_path %>
+	</div>
+	
+	<div class="icon">
+		<%= link_to image_tag("office-building.png", :width => "160px", :height => "160px"), locations_path %>
+		<br/>
+		<%= link_to "Locations", locations_path %>
+	</div>
+</div>
+<br/>
+<br/>
+<br/>

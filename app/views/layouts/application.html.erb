@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Library</title>
+	<%= stylesheet_link_tag "scaffolds" %>
+	<%= javascript_include_tag "jquery" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div id="header-container">
+		<div class="logo">
+			<%= link_to image_tag("logo2.jpg", :height => "100px", :width => "170px"), root_path %>
+		</div>
+
+		<div class="user_nav">
+			<% if user_signed_in? %>
+				Signed in as <%= current_user.email %>. Not you?
+				<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+			<% else %>
+				<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+			<% end %>
+			<br/>
+		</div>
+		
+		<div class="search">
+			<%= form_tag search_books_path, :method => 'get' do %>
+			  <p>
+				<%= text_field_tag :search, params[:search] %>
+				<%= submit_tag "Search", :name => nil %>
+			  </p>
+			<% end %>
+		</div>
+	</div>
+
+	<div id="main-container">
+		<%= yield %>
+	</div>
+
+</body>
+
+</html>

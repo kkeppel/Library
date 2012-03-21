@@ -1,0 +1,44 @@
+<%= form_for(@book, :html => {:multipart => true }) do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+	<table>
+		<tr>
+			<td>Title</td>
+			<td><%= f.text_field(:title) %></td>
+		</tr>
+		<tr>
+			<td>Author</td>
+			<td><%= f.text_field(:author) %></td>
+		</tr>
+		<tr>
+			<td>ISBN 13</td>
+			<td><%= f.text_field(:isbn13) %></td>
+		</tr>
+		<tr>
+			<td>ISBN 10</td>
+			<td><%= f.text_field(:isbn10) %></td>
+		</tr>
+		<tr>
+			<td valign="top">Description</td>
+			<td><%= f.text_area(:description, :cols => 24, :rows => 5) %></td>
+		</tr>
+		<tr>
+			<td valign="top">Location</td>
+			<td><%= collection_select("book", :location_id, Location.find(:all), :id, :name) %></td>
+		</tr>
+	</table>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
