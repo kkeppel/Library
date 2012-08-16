@@ -12,7 +12,7 @@ Library::Application.routes.draw do
 		end
 	end
 	
-	match 'books/:id/request_book' => 'books#request_book'
+	match 'books/:id/request_book' => 'books#request_book', :as => :request_book
 	
 	
 

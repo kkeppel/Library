@@ -9,44 +9,41 @@
 		<th>ISBN 13</th>
 		<th>Location</th>
 		<th>Available?</th>
-		<% if current_user != nil and current_user.admin? %>
+		<% if !current_user.nil? and current_user.admin? %>
 			<th>Options</th>
 		<% end %>
 	  </tr>
 
 	<% @books.each do |book| %>
-	  <tr class="<%= cycle("even_row", "odd_row") %>">
-		<td><%= book.title %></td>
-		<td><%= book.author %></td>
-		<td><%= book.isbn10 unless book.isbn10.nil? %></td>
-		<td><%= book.isbn13 unless book.isbn13.nil? %></td>
-		<td><%= book.location.name unless book.location.nil? %></td>
-		<td>
-			<% if book.available? %>
-				Yes - <%= link_to 'Request', "/books/#{book.id}/request_book", :remote => true %>
-			<% else %>
-				No - <%= link_to 'Request', "/books/#{book.id}/request_book", :remote => true %>
+		<tr class="<%= cycle("even_row", "odd_row") %>">
+			<td><%= book.title %></td>
+			<td><%= book.author %></td>
+			<td><%= book.isbn10 unless book.isbn10.nil? %></td>
+			<td><%= book.isbn13 unless book.isbn13.nil? %></td>
+			<td><%= book.location.name unless book.location.nil? %></td>
+			<td>
+				<% if book.available? %>
+					Yes - <%= link_to 'Request', request_book_path(book), :remote => true %>
+				<% else %>
+					No - <%= link_to 'Request', request_book_path(book), :remote => true %>
+				<% end %>
+			</td>
+			<% if !current_user.nil? and current_user.admin? %>
+				<td><%= link_to 'Edit', edit_book_path(book) %></td>
 			<% end %>
-		</td>
-		<% if current_user != nil and current_user.admin? %>
-			<td><%= link_to 'Edit', "/books/#{book.id}/edit" %></td>
+		</tr>
 		<% end %>
-	  </tr>
-	<% end %>
 	</table>
 <% else %>
-<p align="center">
-	There are no books listed.
-</p>
+	<p align="center">
+		There are no books listed.
+	</p>
 <% end %>
 <br />
 <p align="center">
-<% if current_user != nil and current_user.admin? %>
-	<%= link_to 'New Book', '/books/new' %>
-	|
-<% end %>
-<%= link_to 'Locations', locations_path %>
-|
-<%= link_to 'Home', root_path %>
-
+	<% if current_user != nil and current_user.admin? %>
+		<%= link_to 'New Book', new_book_path %>
+		|
+	<% end %>
+	<%= link_to 'Locations', locations_path %> | <%= link_to 'Home', root_path %>
 </p>

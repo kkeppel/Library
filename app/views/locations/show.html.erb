@@ -2,66 +2,78 @@
 
 <div id="left-frame">
 	<h3 align="center">Our Most Popular Book!</h3>
-	
-	<%= @most_popular.title %>
-	<br/>
-	By: <%=@most_popular.author %>
-	<br/>
-	<hr/>
-	<p style="font-size:11px;">
-		<%= @most_popular.description %>
-	</p>
-	<br/>
-	<p align="center">
-		<strong>
-			<%= link_to 'Request!', "/books/#{@most_popular.id}/request_book", :remote => true %>
-		</strong>
-	</p>
+	<% unless @most_popular.nil? %>
+		<%= @most_popular.title %>
+		<br/>
+		By: <%=@most_popular.author %>
+		<br/>
+		<hr/>
+		<p style="font-size:11px;">
+			<%= @most_popular.description %>
+		</p>
+		<br/>
+		<p align="center">
+			<strong>
+				<%= link_to 'Request!', request_book_path(@most_popular.id), :remote => true %>
+			</strong>
+		</p>
+	<% else %>
+		No books have been requested yet.
+	<% end %>
 </div>
 
 <div id="book-list">
-<% previous_book = '' %>
-<table width="99%">
-	<tr>
-		<th>Title</th>
-		<th>Author</th>
-		<th>Available?</th>
-		<th></th>
-	</tr>
+	<% previous_book = '' %>
+	
+	<table width="99%">
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Available?</th>
+			<th></th>
+		</tr>
 
-	<% @books.each do |book| %>
-		<% if previous_book != book.title %>
-			<tr class="<%= cycle("even_row", "odd_row") %>">
-				<td width="25%"><%= book.title %></td>
-				<td width="25%"><%= book.author %></td>
-				<td width="5%">
-				<% if book.available? %>
-			Yes
+		<% if @location.book %>
+		
+			<% @books.each do |book| %>
+				<% if previous_book != book.title %>
+					<tr class="<%= cycle("even_row", "odd_row") %>">
+						<td width="25%"><%= book.title %></td>
+						<td width="25%"><%= book.author %></td>
+						<td width="5%"><%= book.available? ? "Yes" : "No" %></td>
+						<td>
+							<%= link_to 'View', '#', :onclick => "$('tr#details_#{book.id}').slideToggle('slow'); return false;" %>
+							|
+							<%= link_to 'Request', "/books/#{book.id}/request_book", :remote => true %>
+							<% if user_signed_in? and current_user.admin? %>
+								|
+								<%= link_to 'Edit', "books/#{book.id}/edit" %>
+							<% end %>
+						</td>
+					</tr>
+					<tr id="details_<%= book.id %>" style="display:none;">
+						<td valign="top" width="25%">ISBN-10 : <br/><%= book.isbn10 unless book.isbn10.nil? %></td>
+						<td valign="top" width="25%">ISBN-13 : <br/><%= book.isbn13 unless book.isbn13.nil? %></td>
+						<td colspan="3" style="font-size:10px;"><%= book.description %></td>
+					</tr>
+				<% end %>
+		
+				<% previous_book = book.title %>
+			
+			<% end %>
+		
 		<% else %>
-			No
-		<% end %>
-		</td>
-				<td>
-					<%= link_to 'View', '#', :onclick => "$('tr#details_#{book.id}').slideToggle('slow'); return false;" %>
-					|
-					<%= link_to 'Request', "/books/#{book.id}/request_book", :remote => true %>
-					<% if user_signed_in? and current_user.admin? %>
-					|
-						<%= link_to 'Edit', "books/#{book.id}/edit" %>
-					<% end %>
-				</td>
+			<tr>
+				<td colspan="4">There are no books listed at this location.<td>
 			</tr>
-			<tr id="details_<%= book.id %>" style="display:none;">
-				<td valign="top" width="25%">ISBN-10 : <br/><%= book.isbn10 unless book.isbn10.nil? %></td>
-				<td valign="top" width="25%">ISBN-13 : <br/><%= book.isbn13 unless book.isbn13.nil? %></td>
-				<td colspan="3" style="font-size:10px;">
-					<%= book.description %>
-				</td>
+			<tr>
+				<% if !current_user.nil? and current_user.admin? %>
+					<td colspan="4"><%= link_to "Add books", new_book_path %></td
+				<% end %>
 			</tr>
 		<% end %>
-		<% previous_book = book.title %>
-	<% end %>
-</table>
+		
+	</table>
 </div>
 
 <br/>
